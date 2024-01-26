@@ -33,9 +33,29 @@
       <input type="range" id="cCyl" name="cCyl" value="4" max="12">
       <span id="cCylValue">4</span>
     </div>
+    <div class="slider-container">
+      <label for="RevLimit">Rev Limiter:</label>
+      <input type="range" id="RevLimit" name="RevLimit" value="6500" max="20000">
+      <span id="RevLimitValue">6500</span>
+    </div>
+    <div class="slider-container">
+      <label for="CompRatio">Compression Ratio:</label>
+      <input type="range" id="CompRatio" name="CompRatio" value="10" max="25">
+      <span id="CompRatioValue">10</span>
+    </div>
+    <div class="slider-container">
+      <label for="RatedHP">Rated Horsepower(hp):</label>
+      <input type="range" id="RatedHP" name="RatedHP" value="100" max="1000">
+      <span id="RatedHPValue">100</span>
+    </div>
     <br>
-    <button type="multiply" onClick="displacement()">Get Displacement</button>
+    <button type="button" onClick="calc()">Calc</button>
     <p>Displacement: <span id="ccDisp">0</span>cc</p>
+    <p>Piston Speed: <span id="msPistonSpeed">0</span>m/s</p>
+    <p>Estimated Max RPM: <span id="mRPM">0</span>rpm @ 25m/s</p>
+    <p>Estimated Current Horsepower: <span id="eHP">0</span>hp</p>
+    <p>Estimated Max Horsepower: <span id="mHP">0</span>hp</p>
+    <p>Findable HP: <span id="mHPDiff">0</span>hp</p>
   </div>
   <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
   <footer>Created by GalacticBonsai</footer>
