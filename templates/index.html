@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIMath - Engine Displacement Calculator</title> <!-- Title added here -->
+    <style>
+      /* CSS for the banner */
+      header {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header> <!-- Banner -->
+      <h1>FIMath - Engine Displacement Calculator</h1> <!-- Title added here -->
+    </header>
+    <div class="slider-container">
+      <label for="mmBore">Bore(mm):</label>
+      <input type="range" id="mmBore" name="mmBore" max="133" value="86">
+      <span id="mmBoreValue">86</span>
+    </div>
+    <div class="slider-container">
+      <label for="mmStroke">Stroke(mm):</label>
+      <input type="range" id="mmStroke" name="mmStroke" max="150" value="86">
+      <span id="mmStrokeValue">86</span>
+    </div>
+    <div class="slider-container">
+      <label for="cCyl">Cylinder Count:</label>
+      <input type="range" id="cCyl" name="cCyl" value="4" max="12">
+      <span id="cCylValue">4</span>
+    </div>
+    <br>
+    <button type="multiply" onClick="displacement()">Get Displacement</button>
+    <p>Displacement: <span id="ccDisp">0</span>cc</p>
+  </div>
   <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+  <footer>Created by GalacticBonsai</footer>
 </body>
 </html>
