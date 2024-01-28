@@ -53,50 +53,22 @@ function calc() {
 
 // Function to update the displayed values next to the sliders
 function updateSliderValues() {
-  // Update Bore value
-  document.getElementById('mmBoreValue').textContent = document.getElementById('mmBore').value;
-  // Update Stroke value
-  document.getElementById('mmStrokeValue').textContent = document.getElementById('mmStroke').value;
-  // Update Cylinder Count value
-  document.getElementById('cCylValue').textContent = document.getElementById('cCyl').value;
-  // Update Compression Ratio value
-  document.getElementById('CompRatioValue').textContent = document.getElementById('CompRatio').value;
-  // Update Compression Ratio value
-  document.getElementById('RevLimitValue').textContent = document.getElementById('RevLimit').value;
-  // Update Compression Ratio value
-  document.getElementById('RatedHPValue').textContent = document.getElementById('RatedHP').value;
+  const inputIds = ['mmBore', 'mmStroke', 'cCyl', 'CompRatio', 'RevLimit', 'RatedHP'];
+
+  inputIds.forEach(id => {
+    const rangeId = id + 'Range';
+    const inputRange = document.getElementById(rangeId);
+    const inputText = document.getElementById(id);
+
+    inputRange.addEventListener('input', function() {
+      inputText.value = inputRange.value;
+    });
+
+    inputText.addEventListener('input', function() {
+      inputRange.value = inputText.value;
+    });
+  });
 }
 
-// Event listeners to update the displayed values as the sliders change
-document.getElementById('mmBore').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-document.getElementById('mmStroke').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-document.getElementById('cCyl').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-document.getElementById('CompRatio').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-document.getElementById('RevLimit').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-document.getElementById('RatedHP').addEventListener('input', function() {
-  updateSliderValues();
-});
-
-let canvas = document.getElementById("myCanvas");
-let ctx = canvas.getContext("2d");
-
-ctx.fillStyle = getRandomColor();
-ctx.fillRect(0, 0, 80, 80);
-
-//https://www.w3schools.com/graphics/canvas_intro.asp
-//https://www.w3schools.com/TAGs/
+// Call the function to set up event listeners
+updateSliderValues();
