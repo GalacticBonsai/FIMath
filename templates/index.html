@@ -5,24 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FIMath - Engine Displacement Calculator</title>
   <style>
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-    .slider-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .slider-container input[type="range"] {
-      width: 70%;
-    }
-    .slider-container input[type="number"] {
-      width: 25%;
-    }
+
   </style>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -30,36 +13,52 @@
 <header>
   <h1>FIMath - Engine Displacement Calculator</h1>
 </header>
-<div class="slider-container">
-  <label for="mmBore">Bore(mm):</label>
-  <input type="range" id="mmBoreRange" name="mmBoreRange" max="133" value="86">
-  <input type="number" id="mmBore" name="mmBore" max="133" value="86">
-</div>
-<div class="slider-container">
-  <label for="mmStroke">Stroke(mm):</label>
-  <input type="range" id="mmStrokeRange" name="mmStrokeRange" max="150" value="86">
-  <input type="number" id="mmStroke" name="mmStroke" max="150" value="86">
-</div>
-<div class="slider-container">
-  <label for="cCyl">Cylinder Count:</label>
-  <input type="range" id="cCylRange" name="cCylRange" value="4" max="12">
-  <input type="number" id="cCyl" name="cCyl" value="4" max="12">
-</div>
-<div class="slider-container">
-  <label for="RevLimit">Rev Limiter:</label>
-  <input type="range" id="RevLimitRange" name="RevLimitRange" value="6500" max="20000">
-  <input type="number" id="RevLimit" name="RevLimit" value="6500" max="20000">
-</div>
-<div class="slider-container">
-  <label for="CompRatio">Compression Ratio:</label>
-  <input type="range" id="CompRatioRange" name="CompRatioRange" value="10" max="25">
-  <input type="number" id="CompRatio" name="CompRatio" value="10" max="25">
-</div>
-<div class="slider-container">
-  <label for="RatedHP">Rated Horsepower(hp):</label>
-  <input type="range" id="RatedHPRange" name="RatedHPRange" value="100" max="1000">
-  <input type="number" id="RatedHP" name="RatedHP" value="100" max="1000">
-</div>
+<!-- Dropdown for selecting presets -->
+<label for="presets">Presets:</label>
+<select id="presets">
+  <option value="custom">Custom</option>
+  <!-- presets in JS -->
+</select>
+<form id="fuelTypeForm">
+  <label for="gas">Gas:</label>
+  <input type="radio" id="gas" name="fuelType" value="gas" checked>
+  <label for="diesel">Diesel:</label>
+  <input type="radio" id="diesel" name="fuelType" value="diesel">
+  <label for="e85">E85:</label>
+  <input type="radio" id="e85" name="fuelType" value="e85">
+</form>
+<form id="sliders">
+  <div class="slider-container">
+    <label for="mmBore">Bore(mm):</label>
+    <input type="range" id="mmBoreRange" name="mmBoreRange" max="133" value="96">
+    <input type="number" id="mmBore" name="mmBore" max="133" value="96">
+  </div>
+  <div class="slider-container">
+    <label for="mmStroke">Stroke(mm):</label>
+    <input type="range" id="mmStrokeRange" name="mmStrokeRange" max="150" value="86">
+    <input type="number" id="mmStroke" name="mmStroke" max="150" value="86">
+  </div>
+  <div class="slider-container">
+    <label for="cCyl">Cylinder Count:</label>
+    <input type="range" id="cCylRange" name="cCylRange" value="6" max="12">
+    <input type="number" id="cCyl" name="cCyl" value="6" max="12">
+  </div>
+  <div class="slider-container">
+    <label for="RevLimit">Rev Limiter:</label>
+    <input type="range" id="RevLimitRange" name="RevLimitRange" value="7500" max="20000">
+    <input type="number" id="RevLimit" name="RevLimit" value="7500" max="20000">
+  </div>
+  <div class="slider-container">
+    <label for="CompRatio">Compression Ratio:</label>
+    <input type="range" id="CompRatioRange" name="CompRatioRange" value="11" max="25">
+    <input type="number" id="CompRatio" name="CompRatio" value="11" max="25">
+  </div>
+  <div class="slider-container">
+    <label for="RatedHP">Rated Horsepower(hp):</label>
+    <input type="range" id="RatedHPRange" name="RatedHPRange" value="332" max="1000">
+    <input type="number" id="RatedHP" name="RatedHP" value="332" max="1000">
+  </div>
+</form>
 <br>
 <button type="button" onClick="calc()">Calc</button>
 <p>Displacement: <span id="ccDisp">0</span>cc</p>
@@ -69,6 +68,21 @@
 <p>Estimated Max Horsepower: <span id="mHP">0</span>hp</p>
 <p>Flowable extra HP: <span id="mHPDiff">0</span>hp</p>
 <p>Raised Redline extra HP: <span id="mRPMHPDiff">0</span>hp</p>
+
+<!-- Boost form -->
+<button id="toggleBoostForm">Boosted?</button>
+<div class="boost-form" id="boostForm">
+  <div class="slider-container">
+    <label for="boostPsi">Boost PSI:</label>
+    <input type="range" id="boostPsiRange" name="boostPsiRange" value="0" max="25">
+    <input type="number" id="boostPsi" name="boostPsi" value="0" max="25">
+  </div>
+  <div class="slider-container">
+    <label for="ecr12" class="red-label">12 ECR:</label>
+    <label for="ecr15" class="red-label">15 ECR:</label>
+    <label for="ecr25" class="red-label">25 ECR:</label>
+  </div>
+</div>
 <footer>Created by GalacticBonsai</footer>
 <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
 </body>
