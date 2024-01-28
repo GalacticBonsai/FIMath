@@ -48,7 +48,9 @@ function calc() {
   document.getElementById("mHP").textContent = Math.floor(mHP);
 
   var rHP = Number(document.getElementById("RatedHP").value);
-  document.getElementById("mHPDiff").textContent = Math.floor(mHP - rHP);
+  document.getElementById("mHPDiff").textContent = Math.floor(eHP - rHP);
+  document.getElementById("mRPMHPDiff").textContent = Math.floor(mHP - rHP);
+  
 }
 
 // Function to update the displayed values next to the sliders
