@@ -59,8 +59,7 @@
     <input type="number" id="ratedHP" name="ratedHP" value="332" max="1000">
   </div>
 </form>
-<br>
-<button type="button" onClick="calc()">Calc</button>
+<h2>Calculations</h2>
 <p>Displacement: <span id="ccDisp">0</span>cc</p>
 <p>Piston Speed: <span id="msPistonSpeed">0</span>m/s</p>
 <p>Estimated Max RPM: <span id="mRPM">0</span>rpm @ 25m/s</p>
@@ -70,13 +69,15 @@
 <p>Raised Redline extra HP: <span id="mRPMHPDiff">0</span>hp</p>
 
 <!-- Boost form -->
-<button id="toggleBoostForm">Boosted?</button>
+<h2>Boosted?</h2>
 <div class="boost-form" id="boostForm">
   <div class="slider-container">
     <label for="boostPsi">Boost PSI:</label>
     <input type="range" id="boostPsiRange" name="boostPsiRange" value="0" max="50">
     <input type="number" id="boostPsi" name="boostPsi" value="0" max="50">
   </div>
+  <p>BoostHP: <span id="boostHP">0</span>HP</p>
+  <p>ECR: <span id="ecr">0</span></p>
   <div class="slider-container">
     <label for="ecr12" class="red-label">12 ECR:</label>
     <label for="ecr15" class="red-label">15 ECR:</label>

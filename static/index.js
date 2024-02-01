@@ -26,6 +26,11 @@ function updateDisplayValue(id, value) {
   document.getElementById(id).textContent = Math.floor(value);
 }
 
+function updateCalcs() {
+  updateEcr();
+  calc();
+}
+
 function updateSliderValues() {
   const inputIds = ['mmBore', 'mmStroke', 'cCyl', 'compRatio', 'revLimit', 'ratedHP', 'boostPsi'];
 
@@ -38,12 +43,12 @@ function updateSliderValues() {
     if (inputRange && inputText) {
       const updatesliderValues = () => {
         inputText.value = inputRange.value;
-        updateEcr();
+        updateCalcs();
       };
       const updateTextValues = () => {
         inputRange.value= inputText.value;
-        updateEcr();
-      }
+        updateCalcs();
+      };
       console.log(`Added listener for ${rangeId}`);
       inputRange.addEventListener('input', updatesliderValues);
       inputText.addEventListener('input', updateTextValues);
@@ -63,11 +68,16 @@ function updateEcr() {
   const boostValue = Number(elements.boostPsi.value);
   const ehp = Number(document.getElementById("eHP").textContent);
 
+  // update est HP based on CR, HP, and Boost PSI
+  var boostRatio = ((atmosphere + boostValue) / atmosphere);
+  document.getElementById("boostHP").textContent = Math.floor(ehp * boostRatio);
+  document.getElementById("ecr").textContent = (cr*boostRatio).toFixed(1);
+
   for (const [value, label] of Object.entries(ecrLabels)) {
     const ecrValue = atmosphere * (value / cr - 1);
     const hpValue = ehp * ((atmosphere + ecrValue) / atmosphere);
 
-    label.textContent = `${value} ECR (${ecrValue.toFixed(2)} PSI) (${hpValue.toFixed(2)})`;
+    label.textContent = `${value} ECR (${ecrValue.toFixed(2)}PSI) (${hpValue.toFixed(2)}HP)`;
     label.classList.toggle('red-label', boostValue > ecrValue);
   }
 }
@@ -171,3 +181,4 @@ function handlePresetSelection() {
 presetsDropdown.addEventListener('change', handlePresetSelection);
 populatePresetsDropdown();
 updateSliderValues();
+updateCalcs();
