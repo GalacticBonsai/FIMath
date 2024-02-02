@@ -17,16 +17,13 @@
 <label for="presets">Presets:</label>
 <select id="presets">
   <option value="custom">Custom</option>
-  <!-- presets in JS -->
 </select>
-<form id="fuelTypeForm">
-  <label for="gas">Gas:</label>
-  <input type="radio" id="gas" name="fuelType" value="gas" checked>
-  <label for="diesel">Diesel:</label>
-  <input type="radio" id="diesel" name="fuelType" value="diesel">
-  <label for="e85">E85:</label>
-  <input type="radio" id="e85" name="fuelType" value="e85">
-</form>
+<label for="fuelType">Fuel Type:</label>
+<select id="fuelType">
+  <option value="gas">Gas</option>
+  <option value="diesel">Diesel</option>
+  <option value="e85">E85</option>
+</select>
 <form id="sliders">
   <div class="slider-container">
     <label for="mmBore">Bore(mm):</label>
@@ -50,21 +47,13 @@
   </div>
   <div class="slider-container">
     <label for="compRatio">Compression Ratio:</label>
-    <input type="range" id="compRatioRange" name="compRatioRange" value="11" min="6" max="25" list="cr_ranges">
-    <input type="number" id="compRatio" name="compRatio" value="11" min="6" max="25">
+    <input type="range" id="compRatioRange" name="compRatioRange" value="11" min="6" max="15">
+    <input type="number" id="compRatio" name="compRatio" value="11" min="6" max="15">
   </div>
-  <datalist id="cr_ranges">
-    <option value="6" label="very high boost"></option>
-    <option value="8" label="Gas start"></option>
-    <option value="12" label="Gas stop"></option>
-    <option value="14" label="Diesel start"></option>
-    <option value="15" label="E85 stop"></option>
-    <option value="25" label="Diesel stop"></option>
-  </datalist>
   <div class="slider-container">
-    <label for="ratedHP">Rated Horsepower(hp):</label>
-    <input type="range" id="ratedHPRange" name="ratedHPRange" value="332" max="1000">
-    <input type="number" id="ratedHP" name="ratedHP" value="332" max="1000">
+    <label for="ve">Volumetric Efficiency (VE):</label>
+    <input type="range" id="veRange" name="ve" min="50" value="85" max="110">
+    <input type="number"id="ve" name="ve" min="50" value="85" max="110">
   </div>
 </form>
 <h2>Calculations</h2>
@@ -73,8 +62,6 @@
 <p>Estimated Max RPM: <span id="mRPM">0</span>rpm @ 25m/s</p>
 <p>Estimated Current Horsepower: <span id="eHP">0</span>hp</p>
 <p>Estimated Max Horsepower: <span id="mHP">0</span>hp</p>
-<p>Flowable extra HP: <span id="mHPDiff">0</span>hp</p>
-<p>Raised Redline extra HP: <span id="mRPMHPDiff">0</span>hp</p>
 
 <!-- Boost form -->
 <h2>Boosted?</h2>
@@ -86,13 +73,9 @@
   </div>
   <p>BoostHP: <span id="boostHP">0</span>HP</p>
   <p>Effective Compression Ratio (ECR): <span id="ecr">0</span></p>
-  <div class="slider-container">
-  <p>Pump Gas 12 ECR:<label for="ecr12" class="red-label">0</label><p>
-  <p>E85 15 ECR:<label for="ecr15" class="red-label">0</label><p>
-  <p>Diesel 25 ECR:<label for="ecr25" class="red-label">0</label><p>
-  </div>
+  <p>Max ECR <label id="maxECR">12</label></p>
 </div>
 <footer>Created by GalacticBonsai</footer>
-<script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='index.js')}}"></script>
 </body>
 </html>

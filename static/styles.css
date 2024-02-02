@@ -42,9 +42,6 @@ header {
 .slider-container input[type="number"] {
   width: 25%;
 }
-.boost-form {
-/*   display: none; /*Initially hidden */
-}
 .red-label {
   color: red;
 }
