@@ -27,8 +27,8 @@ function updateDisplayValue(id, value) {
 }
 
 function updateCalcs() {
-  updateEcr();
   calc();
+  updateEcr();
 }
 
 function updateSliderValues() {
