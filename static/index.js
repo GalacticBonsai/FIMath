@@ -77,7 +77,7 @@ function updateEcr() {
     const ecrValue = atmosphere * (value / cr - 1);
     const hpValue = ehp * ((atmosphere + ecrValue) / atmosphere);
 
-    label.textContent = `${value} ECR (${ecrValue.toFixed(2)}PSI) (${hpValue.toFixed(2)}HP)`;
+    label.textContent = `(${ecrValue.toFixed(2)}PSI) (${hpValue.toFixed(2)}HP)`;
     label.classList.toggle('red-label', boostValue > ecrValue);
   }
 }

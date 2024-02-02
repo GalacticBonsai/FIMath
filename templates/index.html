@@ -30,29 +30,37 @@
 <form id="sliders">
   <div class="slider-container">
     <label for="mmBore">Bore(mm):</label>
-    <input type="range" id="mmBoreRange" name="mmBoreRange" max="133" value="96">
-    <input type="number" id="mmBore" name="mmBore" max="133" value="96">
+    <input type="range" id="mmBoreRange" name="mmBoreRange" min="50" max="133" value="96">
+    <input type="number" id="mmBore" name="mmBore" min="50" max="133" value="96">
   </div>
   <div class="slider-container">
     <label for="mmStroke">Stroke(mm):</label>
-    <input type="range" id="mmStrokeRange" name="mmStrokeRange" max="150" value="86">
-    <input type="number" id="mmStroke" name="mmStroke" max="150" value="86">
+    <input type="range" id="mmStrokeRange" name="mmStrokeRange" min="50" max="150" value="86">
+    <input type="number" id="mmStroke" name="mmStroke" min="50" max="150" value="86">
   </div>
   <div class="slider-container">
     <label for="cCyl">Cylinder Count:</label>
-    <input type="range" id="cCylRange" name="cCylRange" value="6" max="12">
-    <input type="number" id="cCyl" name="cCyl" value="6" max="12">
+    <input type="range" id="cCylRange" name="cCylRange" min="1" value="6" max="12">
+    <input type="number" id="cCyl" name="cCyl" min="1" value="6" max="12">
   </div>
   <div class="slider-container">
     <label for="revLimit">Rev Limiter:</label>
-    <input type="range" id="revLimitRange" name="revLimitRange" value="7500" max="20000">
-    <input type="number" id="revLimit" name="revLimit" value="7500" max="20000">
+    <input type="range" id="revLimitRange" name="revLimitRange" value="7500" max="14000" min="1000" step="100">
+    <input type="number" id="revLimit" name="revLimit" value="7500" max="14000" min="1000" step="100">
   </div>
   <div class="slider-container">
     <label for="compRatio">Compression Ratio:</label>
-    <input type="range" id="compRatioRange" name="compRatioRange" value="11" max="25">
-    <input type="number" id="compRatio" name="compRatio" value="11" max="25">
+    <input type="range" id="compRatioRange" name="compRatioRange" value="11" min="6" max="25" list="cr_ranges">
+    <input type="number" id="compRatio" name="compRatio" value="11" min="6" max="25">
   </div>
+  <datalist id="cr_ranges">
+    <option value="6" label="very high boost"></option>
+    <option value="8" label="Gas start"></option>
+    <option value="12" label="Gas stop"></option>
+    <option value="14" label="Diesel start"></option>
+    <option value="15" label="E85 stop"></option>
+    <option value="25" label="Diesel stop"></option>
+  </datalist>
   <div class="slider-container">
     <label for="ratedHP">Rated Horsepower(hp):</label>
     <input type="range" id="ratedHPRange" name="ratedHPRange" value="332" max="1000">
@@ -77,11 +85,11 @@
     <input type="number" id="boostPsi" name="boostPsi" value="0" max="50">
   </div>
   <p>BoostHP: <span id="boostHP">0</span>HP</p>
-  <p>ECR: <span id="ecr">0</span></p>
+  <p>Effective Compression Ratio (ECR): <span id="ecr">0</span></p>
   <div class="slider-container">
-    <label for="ecr12" class="red-label">12 ECR:</label>
-    <label for="ecr15" class="red-label">15 ECR:</label>
-    <label for="ecr25" class="red-label">25 ECR:</label>
+  <p>Pump Gas 12 ECR:<label for="ecr12" class="red-label">0</label><p>
+  <p>E85 15 ECR:<label for="ecr15" class="red-label">0</label><p>
+  <p>Diesel 25 ECR:<label for="ecr25" class="red-label">0</label><p>
   </div>
 </div>
 <footer>Created by GalacticBonsai</footer>
