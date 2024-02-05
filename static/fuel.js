@@ -1,7 +1,5 @@
-console.log("top of fuel");
-
 export function calculateECR() {
-    const fuelType = document.getElementById(fuel).value; // Get selected fuel type from dropdown
+    const fuelType = document.getElementById("fuelType").value; // Get selected fuel type from dropdown
     let maxECR = 0;
     let minECR = 0;
 
@@ -23,9 +21,6 @@ export function calculateECR() {
             break;
     }
 
-    // Display the maximum ECR for the selected fuel type
-    document.getElementById('maxECR').textContent = maxECR;
-
     // Update the compRatio input and its range
     const compRatioInput = document.getElementById('compRatio');
     const compRatioRange = document.getElementById('compRatioRange');
@@ -43,9 +38,14 @@ export function calculateECR() {
         compRatioRange.value = maxECR;
     }
 
-    // Update the ECR value
-    const ecrValue = Math.min(currentCompRatio, maxECR);
-    document.getElementById('ecr').textContent = ecrValue.toFixed(1);
+    if (document.getElementById('maxECR') != null){
+        // Display the maximum ECR for the selected fuel type
+        document.getElementById('maxECR').textContent = maxECR;
+        
+        // Update the ECR value
+        const ecrValue = Math.min(currentCompRatio, maxECR);
+        document.getElementById('ecr').textContent = ecrValue.toFixed(1);
+    }
 }
 
 // Add event listener for fuel type selection

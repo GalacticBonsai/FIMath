@@ -1,4 +1,5 @@
-console.log("started engine");
+import { updateSliderValues } from "./slider.js";
+
 
 function displacement(bore, stroke, cylender) {
   var ccDisp = (Math.PI / 4) * (bore / 10) ** 2 * (stroke / 10) * cylender;
@@ -40,29 +41,4 @@ export function calc() {
   updateDisplayValue("mHP", mHP);
 }
 
-export function updateSliderValues() {
-  const inputIds = ['mmBore', 'mmStroke', 'cCyl', 'compRatio', 'revLimit', 've', 'boostPsi'];
-
-  inputIds.forEach(id => {
-    console.log('added listeners for ' + id);
-    const rangeId = id + 'Range';
-    const inputRange = document.getElementById(rangeId);
-    const inputText = document.getElementById(id);
-
-    if (inputRange && inputText) {
-      const updatesliderValues = () => {
-        inputText.value = inputRange.value;
-        calc();
-      };
-      const updateTextValues = () => {
-        inputRange.value= inputText.value;
-        calc();
-      };
-      inputRange.addEventListener('input', updatesliderValues);
-      inputText.addEventListener('input', updateTextValues);
-    }
-  });
-}
-
-console.log("imported engine.js");
-updateSliderValues();
+updateSliderValues(['mmBore', 'mmStroke', 'cCyl', 'compRatio', 'revLimit', 've', 'boostPsi'], calc);

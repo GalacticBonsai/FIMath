@@ -12,14 +12,14 @@
 <label for="fuelType">Fuel Type:</label>
 <select id="fuelType">
   <option value="gas">Gas</option>
-  <option value="diesel">Diesel</option>
   <option value="e85">E85</option>
+  <option value="diesel">Diesel</option>
 </select>
 <div class="boost-form" id="boostForm">
   <div class="slider-container">
     <label for="nahp">Naturally Aspirated Horsepower:</label>
-    <input type="range" id="nahpRange" name="nahpRange" value="0" max="50">
-    <input type="number" id="nahp" name="nahp" value="0" max="50">
+    <input type="range" id="nahpRange" name="nahpRange" value="0" max="500">
+    <input type="number" id="nahp" name="nahp" value="0" max="500">
   </div>
   <div class="slider-container">
     <label for="compRatio">Compression Ratio:</label>
@@ -35,5 +35,6 @@
   <p>Effective Compression Ratio (ECR): <span id="ecr">0</span></p>
   <p>Max ECR <label id="maxECR">12</label></p>
 </div>
-{% endblock %}
 <script type="module" src="{{url_for('static', filename='boost.js')}}" defer></script>
+<script type="module" src="{{url_for('static', filename='presets.js')}}" defer></script>
+{% endblock %}

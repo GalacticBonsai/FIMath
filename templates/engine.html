@@ -13,8 +13,8 @@
 <label for="fuelType">Fuel Type:</label>
 <select id="fuelType">
   <option value="gas">Gas</option>
-  <option value="diesel">Diesel</option>
   <option value="e85">E85</option>
+  <option value="diesel">Diesel</option>
 </select>
 <form id="sliders">
   <div class="slider-container">
@@ -54,6 +54,7 @@
 <p>Estimated Max RPM: <span id="mRPM">0</span>rpm @ 25m/s</p>
 <p>Estimated Current Horsepower: <span id="eHP">0</span>hp</p>
 <p>Estimated Max Horsepower: <span id="mHP">0</span>hp</p>
-{% endblock %}
-
 <script type="module" src="{{url_for('static', filename='engine.js')}}" defer></script>
+<script type="module" src="{{url_for('static', filename='presets.js')}}" defer></script>
+<script type="module" src="{{url_for('static', filename='fuel.js')}}" defer></script>
+{% endblock %}

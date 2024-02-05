@@ -1,7 +1,3 @@
-import { calc } from "./calcs.js";
-
-console.log("top of presets");
-
 const presetsDropdown = document.getElementById('presets');
 
 const presets = {
@@ -70,7 +66,6 @@ export function handlePresetSelection() {
       inputRange.value = inputText.value;
     });
   }
-  calc();
 }
 
 presetsDropdown.addEventListener('change', handlePresetSelection);
