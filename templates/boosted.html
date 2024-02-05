@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+
+{% block title %}FIMath Calculator{% endblock %}
+
+{% block header %}FIMath - Boosted{% endblock %}
+
+{% block content %}
+<div class="boost-form" id="boostForm">
+  <div class="slider-container">
+    <label for="boostPsi">Boost PSI:</label>
+    <input type="range" id="boostPsiRange" name="boostPsiRange" value="0" max="50">
+    <input type="number" id="boostPsi" name="boostPsi" value="0" max="50">
+  </div>
+  <p>BoostHP: <span id="boostHP">0</span>HP</p>
+  <p>Effective Compression Ratio (ECR): <span id="ecr">0</span></p>
+  <p>Max ECR <label id="maxECR">12</label></p>
+</div>
+{% endblock %}
