@@ -1,5 +1,6 @@
-import { elements } from "./elements.js";
 import { calc } from "./calcs.js";
+
+console.log("top of presets");
 
 const presetsDropdown = document.getElementById('presets');
 
@@ -52,19 +53,19 @@ export function populatePresetsDropdown() {
 export function handlePresetSelection() {
   const selectedPreset = presets[presetsDropdown.value];
   if (selectedPreset) {
-    elements.mmBore.value = selectedPreset.mmBore;
-    elements.mmStroke.value = selectedPreset.mmStroke;
-    elements.cCyl.value = selectedPreset.cCyl;
-    elements.revLimit.value = selectedPreset.revLimit;
-    elements.compRatio.value = selectedPreset.compRatio;
-    elements.ve.value = selectedPreset.ve;
+    documents.getElementById(mmBore).value = selectedPreset.mmBore;
+    documents.getElementById(mmStroke).value = selectedPreset.mmStroke;
+    documents.getElementById(cCyl).value = selectedPreset.cCyl;
+    documents.getElementById(revLimit).value = selectedPreset.revLimit;
+    documents.getElementById(compRatio).value = selectedPreset.compRatio;
+    documents.getElementById(ve).value = selectedPreset.ve;
 
     const inputIds = ['mmBore', 'mmStroke', 'cCyl', 'compRatio', 'revLimit', 've'];
 
     inputIds.forEach(id => {
       const rangeId = id + 'Range';
       const inputRange = document.getElementById(rangeId);
-      const inputText = elements[id];
+      const inputText = document.getElementById(id);
 
       inputRange.value = inputText.value;
     });

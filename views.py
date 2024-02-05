@@ -13,3 +13,7 @@ def engine():
 @views.route("/boosted")
 def boosted():
     return render_template("boosted.html")
+
+@views.route("/explained")
+def explained():
+    return render_template("explained.html")

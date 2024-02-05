@@ -1,25 +1,22 @@
-import { atmosphere, elements } from "./elements.js";
-import { estHP } from "./calcs.js";
+import { atmosphere } from "./consts.js";
+import {calculateECR} from "fuel.js"
+console.log("top of boost");
 
 function boostRatio(atmosphere, psi) {
  return ((atmosphere + psi) / atmosphere);
 }
 
 export function boostCalc() {
-  var cr = Number(elements.compRatio.value);
-  const boostValue = Number(elements.boostPsi.value);
-  var disp = Number(elements.displacement.textContent);
-  var rev = Number(elements.revLimit.value);
-  var cr = Number(elements.compRatio.value);
-  var maxECR = Number(elements.maxECR.textContent);
+  var cr = Number(document.getElementById(compRatio).value);
+  const boostValue = Number(document.getElementById(boostPsi).value);
+  var maxECR = Number(document.getElementById(maxECR).textContent);
+  var hp = Number(document.getElementById("nahp").textContent);
 
-  // update est HP based on CR, HP, and Boost PSI
-  var ehp = estHP(disp,rev,cr,1);
   
   var br = boostRatio(atmosphere,boostValue);
   document.getElementById("boostHP").textContent = Math.floor(ehp * br);
   var ecr = (cr*br).toFixed(1);
-  elements.ecr.textContent = ecr;
+  document.getElementById(ecr).textContent = ecr;
 
   const ecrLabel = document.getElementById('ecr');
 
@@ -32,3 +29,6 @@ export function boostCalc() {
 
 document.getElementById("boostPsiRange").addEventListener('change', boostCalc);
 document.getElementById("boostPsi").addEventListener('change', boostCalc);
+
+// Add event listener for fuel type selection
+document.getElementById('fuelType').addEventListener('input', calculateECR);

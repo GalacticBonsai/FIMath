@@ -1,9 +1,7 @@
-import { elements } from "./elements.js";
-import { calc } from "./calcs.js";
+console.log("top of fuel");
 
-// JavaScript for calculating ECR based on fuel type
 export function calculateECR() {
-    const fuelType = elements.fuel.value; // Get selected fuel type from dropdown
+    const fuelType = document.getElementById(fuel).value; // Get selected fuel type from dropdown
     let maxECR = 0;
     let minECR = 0;
 
@@ -52,4 +50,3 @@ export function calculateECR() {
 
 // Add event listener for fuel type selection
 document.getElementById('fuelType').addEventListener('input', calculateECR);
-document.getElementById('fuelType').addEventListener('input', calc);
