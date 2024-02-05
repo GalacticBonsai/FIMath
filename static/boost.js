@@ -1,6 +1,7 @@
-import { atmosphere } from "./const.js";
 import { updateSliderValues } from "./slider.js";
 import {calculateECR} from "./fuel.js"
+
+export const atmosphere = 14.7;
 
 function boostRatio(atmosphere, psi) {
  return ((atmosphere + psi) / atmosphere);
@@ -10,9 +11,12 @@ export function boostCalc() {
   var cr = Number(document.getElementById("compRatio").value);
   const boostValue = Number(document.getElementById("boostPsi").value);
   var maxECR = Number(document.getElementById("maxECR").textContent);
-  var ehp = Number(document.getElementById("nahp").textContent);
+  var ehp = Number(document.getElementById("nahp").value);
 
   var br = boostRatio(atmosphere,boostValue);
+  console.log(ehp);
+  // console.log(Math.floor(ehp * br));
+
   document.getElementById("boostHP").textContent = Math.floor(ehp * br);
   var ecr = (cr*br).toFixed(1);
   

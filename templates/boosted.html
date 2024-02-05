@@ -5,10 +5,6 @@
 {% block header %}FIMath - Boosted{% endblock %}
 
 {% block content %}
-<label for="presets">Presets:</label>
-<select id="presets">
-  <option value="custom">Custom</option>
-</select>
 <label for="fuelType">Fuel Type:</label>
 <select id="fuelType">
   <option value="gas">Gas</option>
@@ -36,5 +32,4 @@
   <p>Max ECR <label id="maxECR">12</label></p>
 </div>
 <script type="module" src="{{url_for('static', filename='boost.js')}}" defer></script>
-<script type="module" src="{{url_for('static', filename='presets.js')}}" defer></script>
 {% endblock %}
